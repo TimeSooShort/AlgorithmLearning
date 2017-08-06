@@ -1,3 +1,4 @@
+package Other;
 
 public class DoubleNumPower {
 	
@@ -24,7 +25,7 @@ public class DoubleNumPower {
             if((p&1) != 0) {
                 result = result * temp;
                 if(result > 1.7976931348623157E308) {
-                    System.out.println("Ô½½ç");
+                    System.out.println("Ô½ï¿½ï¿½");
                     return -1;
                 }
             }
