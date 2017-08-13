@@ -19,7 +19,7 @@ public class Insertion {
 		assert isSorted(a);
 	}
 
-	// 注意：参数不能换成Comparable[] a,因为被转换成Object对象无法在复原
+	// 注意：参数不能换成Comparable[] a,否则a[j] = swap报错，类型不匹配;
 	private static void exch(Object[] a, int i, int j) {
 		Object swap = a[i];
 		a[i] = a[j];
