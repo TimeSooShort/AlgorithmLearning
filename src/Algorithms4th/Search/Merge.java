@@ -45,6 +45,28 @@ public class Merge {
 		}
 		assert isSorted(a, lo, hi);
 	}
+	
+	/**
+	 * merge方法优化。在merge()方法中的归并过程需要判断i和j是否已经越界，即某半边已经用尽。可以用另一种方式，
+	 * 去掉检测是否某半边已经用尽的代码
+	 */
+	void merges(Comparable[] a, Comparable[] aux, int lo, int mid, int hi) {
+		for (int k = lo; k <= mid; k++) {
+			aux[k] = a[k];
+		}
+		for(int k = mid+1; k <= hi; k++) {
+			aux[k] = a[hi-k+mid+1];
+		}
+		int i = lo, j = hi;
+		for (int k = lo; k <= hi; k++) {
+			if (less(aux[j], aux[i])) {
+				a[k] = aux[j--];
+			}
+			else {
+				a[k] = aux[i++];
+			}
+		}
+	}
 
 	private static boolean less(Comparable v, Comparable w) {
 		return v.compareTo(w) < 0;
