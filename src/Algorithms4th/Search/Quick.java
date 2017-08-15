@@ -1,10 +1,13 @@
 package Algorithms4th.Search;
+import java.util.Random;
+
 import edu.princeton.cs.algs4.StdRandom;
 
 public class Quick {
 
 	public void sort(Comparable[] a) {
-		StdRandom.shuffle(a);
+		//StdRandom.shuffle(a);
+		shuffle(a);
 		sort(a, 0, a.length - 1);
 	}
 
@@ -21,15 +24,12 @@ public class Quick {
 		Comparable v = a[lo];
 		while (true) {
 			while (less(a[++i], v))
-				if (i == hi)
-					break;
+				if (i == hi) break;
 
 			while (less(v, a[--j]))
-				if (j == lo)
-					break;
+				if (j == lo) break;
 
-			if (i >= j)
-				break;
+			if (i >= j) break;
 
 			exch(a, i, j);
 		}
@@ -46,5 +46,22 @@ public class Quick {
 		Object swap = a[i];
 		a[i] = a[j];
 		a[j] = swap;
+	}
+	
+	private void shuffle(Object[] a) {
+		if (a == null) throw new IllegalArgumentException("argument array is null");
+		int n = a.length;
+		for (int i = 0; i < n; i++) {
+			int randomNum = i + uniform(n-i);
+			Object temp = a[randomNum];
+			a[randomNum] = a[i];
+			a[i] = temp;
+		}
+	}
+	
+	//[0,n)
+	private int uniform(int n) {
+		if (n <= 0) throw new IllegalArgumentException("argument must be positive");
+		return new Random(System.currentTimeMillis()).nextInt(n);
 	}
 }
