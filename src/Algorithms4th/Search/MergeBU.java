@@ -6,7 +6,8 @@ public class MergeBU {
 		int n = a.length;
 		Comparable[] aux = new Comparable[n];
 		for (int len = 1; len < n; len *= 2) {
-			// 注：lo<n-len, Math.min()这样的设计是为了解决n为奇数的情况
+			//自底向上的归并排序，先前一个与后一个排，再前两个与后两个，再前四个与后四个...
+			//要考虑到末尾元素不够的情况
 			for (int lo = 0; lo < n - len; lo += len * 2) {
 				int hi = Math.min(lo + len * 2 - 1, n - 1);
 				int mid = lo + len - 1;
