@@ -1,5 +1,10 @@
 package Algorithms4th.Search;
 
+/**
+ * 对归并排序的优化
+ * @author Administrator
+ *
+ */
 public class MergeX {
 
 	private static final int CUTOFF = 7;
