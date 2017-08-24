@@ -1,4 +1,4 @@
-package Algorithms4th;
+package Algorithms4th.search;
 import java.util.LinkedList;
 import java.util.Queue;
 

@@ -1,4 +1,4 @@
-package Algorithms4th.Search;
+package Algorithms4th.Sort;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
@@ -19,7 +19,7 @@ public class Insertion {
 		assert isSorted(a);
 	}
 
-	// ×¢Òâ£º²ÎÊý²»ÄÜ»»³ÉComparable[] a,·ñÔòa[j] = swap±¨´í£¬ÀàÐÍ²»Æ¥Åä;
+	// ×¢ï¿½â£ºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü»ï¿½ï¿½ï¿½Comparable[] a,ï¿½ï¿½ï¿½ï¿½a[j] = swapï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í²ï¿½Æ¥ï¿½ï¿½;
 	private static void exch(Object[] a, int i, int j) {
 		Object swap = a[i];
 		a[i] = a[j];

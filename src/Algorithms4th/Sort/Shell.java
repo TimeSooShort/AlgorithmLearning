@@ -1,16 +1,21 @@
-package Algorithms4th.Search;
+package Algorithms4th.Sort;
 
-public class Bubble {
+public class Shell {
 
 	public void sort(Comparable[] a) {
 		int n = a.length;
-		for (int i = 0; i < n; i++) {
-			for (int j = n - 1; j > i; j--) {
-				if (less(a[j], a[i])) {
-					exch(a, i, j);
+		int h = 1;
+		while (h < n / 3)
+			h = h * 3 + 1;
+		while (h >= 1) {
+			for (int i = h; i < n; i++) {
+				for (int j = i; j >= h && less(a[j], a[j - h]); j -= h) {
+					exch(a, j - h, j);
 				}
 			}
-			assert isSorted(a, 0, i);
+			assert isHSorted(a, h);
+			// ע��Ҫ����assert�жϺ�
+			h /= 3;
 		}
 		assert isSorted(a);
 	}
@@ -32,6 +37,14 @@ public class Bubble {
 	private boolean isSorted(Comparable[] a, int lo, int hi) {
 		for (int i = lo; i < hi; i++) {
 			if (less(a[i + 1], a[i]))
+				return false;
+		}
+		return true;
+	}
+
+	private boolean isHSorted(Comparable[] a, int h) {
+		for (int i = h; i < a.length; i++) {
+			if (less(a[i], a[i - h]))
 				return false;
 		}
 		return true;

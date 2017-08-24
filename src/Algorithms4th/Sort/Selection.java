@@ -1,4 +1,4 @@
-package Algorithms4th.Search;
+package Algorithms4th.Sort;
 import org.omg.PortableServer.ServantActivator;
 
 import edu.princeton.cs.algs4.StdIn;

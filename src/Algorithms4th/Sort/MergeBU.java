@@ -1,4 +1,4 @@
-package Algorithms4th.Search;
+package Algorithms4th.Sort;
 
 public class MergeBU {
 
@@ -6,8 +6,8 @@ public class MergeBU {
 		int n = a.length;
 		Comparable[] aux = new Comparable[n];
 		for (int len = 1; len < n; len *= 2) {
-			//×Ôµ×ÏòÉÏµÄ¹é²¢ÅÅÐò£¬ÏÈÇ°Ò»¸öÓëºóÒ»¸öÅÅ£¬ÔÙÇ°Á½¸öÓëºóÁ½¸ö£¬ÔÙÇ°ËÄ¸öÓëºóËÄ¸ö...
-			//Òª¿¼ÂÇµ½Ä©Î²ÔªËØ²»¹»µÄÇé¿ö
+			//ï¿½Ôµï¿½ï¿½ï¿½ï¿½ÏµÄ¹é²¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Å£ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½...
+			//Òªï¿½ï¿½ï¿½Çµï¿½Ä©Î²Ôªï¿½Ø²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			for (int lo = 0; lo < n - len; lo += len * 2) {
 				int hi = Math.min(lo + len * 2 - 1, n - 1);
 				int mid = lo + len - 1;

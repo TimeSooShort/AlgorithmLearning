@@ -1,4 +1,4 @@
-package Algorithms4th;
+package Algorithms4th.search;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -37,7 +37,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 
 	private int rank(Key key) {
 		if (key == null)
-			throw new IllegalArgumentException("key²»ÄÜÎª¿Õ");
+			throw new IllegalArgumentException("key can't be null");
 		int lo = 0, hi = n - 1;
 		while (lo <= hi) {
 			int mid = lo + (hi - lo) / 2;
@@ -55,7 +55,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 
 	public void put(Key key, Value value) {
 		if (key == null)
-			throw new IllegalArgumentException("key²»ÄÜÎª¿Õ");
+			throw new IllegalArgumentException("key can't be null");
 		if (value == null) {
 			delete(key);
 			return;
@@ -83,10 +83,11 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 
 	public Value get(Key key) {
 		if (key == null)
-			throw new IllegalArgumentException("key²»ÄÜÎª¿Õ");
+			throw new IllegalArgumentException("key can't be null");
 		if (isEmpty())
 			return null;
 		int i = rank(key);
+		//ä¸ºä»€ä¹ˆè¦åˆ¤æ–­i == nï¼Ÿ keyå€¼å¤§äºæ‰€æœ‰æƒ…å†µä¸‹iä¸ºnï¼Œè¯¥æƒ…å†µä¸èƒ½è¿›è¡ŒcompareToåˆ¤æ–­
 		if (i == n || keys[i].compareTo(key) != 0)
 			return null;
 		return values[i];
@@ -102,7 +103,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 
 	public void delete(Key key) {
 		if (key == null)
-			throw new IllegalArgumentException("key²»ÄÜÎª¿Õ");
+			throw new IllegalArgumentException("key can't be null");
 		if (isEmpty())
 			return;
 		int i = rank(key);

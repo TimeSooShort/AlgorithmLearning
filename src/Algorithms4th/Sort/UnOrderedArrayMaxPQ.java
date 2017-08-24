@@ -1,4 +1,4 @@
-package Algorithms4th.Search;
+package Algorithms4th.Sort;
 
 /**
  * 无序数组组成的优先队列（最大数）
