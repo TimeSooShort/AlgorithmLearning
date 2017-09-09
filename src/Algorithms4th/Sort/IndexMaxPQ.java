@@ -108,17 +108,22 @@ public class IndexMaxPQ<Key extends Comparable<Key>> {
 	 */
 	public int delMax() {
 		if (n == 0) throw new NoSuchElementException("priority queue underFlow");
-		int min = pq[1];
+		int maxIndex = pq[1];
 		exch(1, n--);
 		sink(1);
 		
-		assert pq[n+1] == min;
-		keys[min] = null;
+		assert pq[n+1] == maxIndex;
+		keys[maxIndex] = null;
 		pq[n+1] = -1;
-		qp[min] = -1;
-		return min;
+		qp[maxIndex] = -1;
+		return maxIndex;
 	}
 	
+	/**
+	 * 通过索引来更改key
+	 * @param i 索引
+	 * @param key 要被更改的值
+	 */
 	public void changeKey(int i, Key key) {
 		if (!contains(i)) 
 			throw new NoSuchElementException("index is not in the priority queue");
@@ -127,6 +132,10 @@ public class IndexMaxPQ<Key extends Comparable<Key>> {
 		sink(qp[i]);
 	}
 	
+	/**
+	 * 删除索引为i的key
+	 * @param i
+	 */
 	public void delete(int i) {
 		if (!contains(i)) 
 			throw new NoSuchElementException("index is not in the priority queue");
