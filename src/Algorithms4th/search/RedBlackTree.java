@@ -1,7 +1,5 @@
 package Algorithms4th.search;
 
-import javax.xml.transform.Templates;
-
 public class RedBlackTree<Key extends Comparable<Key>, Value> {
 
 	private static final boolean RED = true;
@@ -50,7 +48,7 @@ public class RedBlackTree<Key extends Comparable<Key>, Value> {
 		}
 		Node e = new Node(key, value, parent);
 		if (cmp < 0) t.left = e;
-		else t.right = null;
+		else t.right = e;
 		fixAfterInsertioin(e);
 		size++;
 		return null;
