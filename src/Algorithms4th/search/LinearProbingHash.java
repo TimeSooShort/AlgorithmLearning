@@ -1,9 +1,5 @@
 package Algorithms4th.search;
 
-import javax.print.attribute.ResolutionSyntax;
-
-import org.omg.CORBA.PRIVATE_MEMBER;
-
 public class LinearProbingHash<Key, Value> {
 
 	private static final int INIT_CAPACITY = 4;

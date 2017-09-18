@@ -59,11 +59,17 @@ public class RedBlack2<Key extends Comparable<Key>, Value> {
 		return root == null;
 	}
 	private void flipColors(Node x) {
+		// h must have opposite color of its two children
+        // assert (h != null) && (h.left != null) && (h.right != null);
+        // assert (!isRed(h) &&  isRed(h.left) &&  isRed(h.right))
+        //    || (isRed(h)  && !isRed(h.left) && !isRed(h.right));
 		x.color = !x.color;
 		x.left.color = !x.left.color;
 		x.right.color = !x.right.color;
 	}
 	private Node moveRedLeft(Node x) {
+		// assert (h != null);
+        // assert isRed(h) && !isRed(h.left) && !isRed(h.left.left);
 		flipColors(x);
 		if(isRed(x.right.left)) {
 			x.right = rotateRight(x.right);
@@ -73,6 +79,8 @@ public class RedBlack2<Key extends Comparable<Key>, Value> {
 		return x;
 	}
 	private Node moveRedRight(Node x) {
+		// assert (h != null);
+        // assert isRed(h) && !isRed(h.right) && !isRed(h.right.left);
 		flipColors(x);
 		if (isRed(x.left.left)) {
 			x = rotateRight(x);
@@ -90,6 +98,11 @@ public class RedBlack2<Key extends Comparable<Key>, Value> {
 	}
 	public boolean contains(Key key) {
 		return get(key) != null;
+	}
+	public Node min(Node x) {
+		//assert x!=null
+		if (x.left == null) return x;
+		else return min(x.left);
 	}
 	
 	/** ************************************************************************ */
@@ -110,9 +123,9 @@ public class RedBlack2<Key extends Comparable<Key>, Value> {
 		else if (cmp > 0)   x.right = put(x.right, key, value);
 		else 				x.value = value;
 		
-		if (isRed(x.right) && !isRed(x.left)) rotateLeft(x);
-		if (isRed(x.left) && isRed(x.left.left)) rotateRight(x);
-		if (isRed(x.left) && isRed(x.right)) flipColors(x);
+		if (isRed(x.right) && !isRed(x.left)) 	 	x = rotateLeft(x);
+		if (isRed(x.left) && isRed(x.left.left)) 	x = rotateRight(x);
+		if (isRed(x.left) && isRed(x.right)) 	 	flipColors(x);
 		x.size = size(x.left) + size(x.right) + 1;
 		
 		return x;
@@ -127,7 +140,7 @@ public class RedBlack2<Key extends Comparable<Key>, Value> {
 	private Node deleteMin(Node x) {
 		if (x.left == null)
 			return null;
-		if (!isRed(x.left) && isRed(x.left.left))
+		if (!isRed(x.left) && !isRed(x.left.left))
 			x = moveRedLeft(x);
 		x.left = deleteMin(x.left);
 		return balance(x);
@@ -144,7 +157,7 @@ public class RedBlack2<Key extends Comparable<Key>, Value> {
 			rotateRight(x);
 		if (x.right == null)
 			return null;
-		if (!isRed(x.right) && isRed(x.right.left))
+		if (!isRed(x.right) && !isRed(x.right.left))
 			x = moveRedRight(x);
 		x.right = deleteMax(x.right);
 		return balance(x);
@@ -179,9 +192,19 @@ public class RedBlack2<Key extends Comparable<Key>, Value> {
 		else {
 			if (isRed(x.left))
 				x = rotateRight(x);
-			
+			if (key.compareTo(x.key)==0 && x.right == null) 
+				return null;
+			if (!isRed(x.right) && !isRed(x.right.left)) 
+				x = moveRedRight(x);
+			if (key.compareTo(x.key) == 0) {
+				Node min = min(x.right);
+				x.key = min.key;
+				x.value = min.value;
+				x.right = deleteMin(x.right);
+			}
+			else x.right = delete(x.right, key);
 		}
-		return x;
+		return balance(x);
 	}
 
 }
