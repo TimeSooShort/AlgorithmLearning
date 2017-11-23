@@ -62,7 +62,8 @@ public class LinearProbingHash<Key, Value> {
 	public void put(Key key, Value value) {
 		if (key == null) throw new IllegalArgumentException("argument to put() is null");
 		if (value == null) {
-			
+			delete(key);
+			return;
 		}
 		if (n >= m/2) resize(2*m);
 		int i;

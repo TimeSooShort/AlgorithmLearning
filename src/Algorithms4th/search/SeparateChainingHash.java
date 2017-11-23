@@ -26,7 +26,7 @@ public class SeparateChainingHash<Key, Value> {
 		SeparateChainingHash<Key, Value> temp = new SeparateChainingHash<>(newCapacity);
 		for (int i = 0; i < n; i++) {
 			for(Key key: st[i].keys()) {
-				temp.st[i].put(key, st[i].get(key));
+				temp.put(key, st[i].get(key));
 			}
 		}
 		this.m = temp.m;
