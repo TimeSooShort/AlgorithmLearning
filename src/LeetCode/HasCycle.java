@@ -25,7 +25,7 @@ public class HasCycle {
         if (head == null) return false;
         ListNode oneStep = head;
         ListNode twoStep = head.next;
-        while (twoStep != null && twoStep.next != null && twoStep.next.next != null) {
+        while (twoStep != null && twoStep.next != null) {
             if (oneStep == twoStep) {
                 return true;
             }
