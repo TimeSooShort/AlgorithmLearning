@@ -15,12 +15,14 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="module-library">
-      <library name="algs4.jar">
+      <library>
         <CLASSES>
-          <root url="jar://C:/Users/decyer/algs4/algs4.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../Resource/jar/algs4.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../../Resource/jar/algs4.jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
   </component>
