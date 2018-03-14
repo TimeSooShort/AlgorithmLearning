@@ -3,10 +3,21 @@ package liuyubobo;
 public class InsertSort {
 
     public static void sort(Comparable[] arr){
+          //写法1
+//        for (int i = 0; i < arr.length; i++){
+//            for (int j = i; j > 0 && less(arr[j], arr[j-1]); j--){
+//                swap(arr, j, j-1);
+//            }
+//        }
+
+        //优化
         for (int i = 0; i < arr.length; i++){
-            for (int j = i; j > 0 && less(arr[j], arr[j-1]); j--){
-                swap(arr, j, j-1);
+            Comparable e = arr[i];
+            int j = i;
+            for (; j > 0 && less(e,arr[j-1]); j--){
+                arr[j] = arr[j-1];
             }
+            arr[j] = e;
         }
     }
 

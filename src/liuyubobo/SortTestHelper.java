@@ -15,6 +15,30 @@ public class SortTestHelper {
         return array;
     }
 
+    /**
+     * 产生一个顺序度可控的数组
+     * @param n 数组大小
+     * @param swapTime 交换次数，为0是是有序数组，值越大数组越混乱
+     * @return
+     */
+    public static Integer[] neralyOrderedArr(int n, int swapTime){
+        Integer[] arr = new Integer[n];
+
+        for (int i = 0; i < n; i++){
+            arr[i] = new Integer(i);
+        }
+
+        for (int i = 0; i <= swapTime; i++){
+            int a = (int) (Math.random() * n);
+            int b = (int) (Math.random() * n);
+
+            Integer temp = arr[a];
+            arr[a] = arr[b];
+            arr[b] = temp;
+        }
+        return arr;
+    }
+
     public static void main(String[] args) {
 
         for (int i = 0; i < args.length; i++) {
@@ -46,7 +70,9 @@ public class SortTestHelper {
             sortMethod.invoke(null, params);
             long endTime = System.currentTimeMillis();
 
-            assert isSorted(arr);
+            if (!isSorted(arr)){
+                throw new IllegalStateException(sortClassName+": failed");
+            }
 
             System.out.println(sortClass.getSimpleName() + ": " + (endTime-startTime) + "ms");
         } catch (Exception e) {

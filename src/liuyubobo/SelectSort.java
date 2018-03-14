@@ -3,14 +3,34 @@ package liuyubobo;
 public class SelectSort {
 
     public static void sort(Comparable[] a){
-        for (int i = 0; i < a.length; i++) {
-            int minIndex = i;
-            for (int j = i+1; j < a.length; j++) {
-                if (a[j].compareTo(a[minIndex]) < 0) {
-                    minIndex = j;
+//        for (int i = 0; i < a.length; i++) {
+//            int minIndex = i;
+//        for (int j = i+1; j < a.length; j++) {
+//            if (a[j].compareTo(a[minIndex]) < 0) {
+//                minIndex = j;
+//            }
+//        }
+//        swap(a, i, minIndex);
+//    }
+
+        //优化，在一轮循环中找到最大与最小值
+        int left = 0, right = a.length-1;
+        while (left < right){
+            int minIndex = left, maxIndex = right;
+            if (a[minIndex].compareTo(a[maxIndex]) > 0){
+                swap(a, minIndex, maxIndex);
+            }
+            for (int i = left+1; i < right; i++){
+                if (a[i].compareTo(a[minIndex]) < 0){
+                    minIndex = i;
+                } else if (a[i].compareTo(a[maxIndex]) > 0){
+                    maxIndex = i;
                 }
             }
-            swap(a, i, minIndex);
+            swap(a, minIndex, left);
+            swap(a, maxIndex, right);
+            left++;
+            right--;
         }
     }
 
@@ -55,7 +75,6 @@ public class SelectSort {
 //        }
 //        System.out.println();
 
-        //360ms
         Integer[] array = SortTestHelper.randomArray(20000, 0, 100000);
         SortTestHelper.testSort("liuyubobo.SelectSort", array);
     }
