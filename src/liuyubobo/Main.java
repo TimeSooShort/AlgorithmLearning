@@ -14,17 +14,21 @@ public class Main {
 
         Integer[] arr = SortTestHelper.randomArray(n ,0, n);
         Integer[] arrCopy = Arrays.copyOf(arr, n);
+        Integer[] arr2 = Arrays.copyOf(arr, n);
+        Integer[] arr3 = Arrays.copyOf(arr, n);
 
         SortTestHelper.testSort("liuyubobo.SelectSort", arr);
         SortTestHelper.testSort("liuyubobo.InsertSort", arrCopy);
+        SortTestHelper.testSort("liuyubobo.BubbleSort", arr2);
+        SortTestHelper.testSort("liuyubobo.ShellSort", arr3);
 
         //有序性很强的数组
-        System.out.println("测试有序性更强的数组，大小：" + n + "范围从：[0, 3)");
-        arr = SortTestHelper.randomArray(n ,0, 3);
-        arrCopy = Arrays.copyOf(arr, n);
-
-        SortTestHelper.testSort("liuyubobo.SelectSort", arr);
-        SortTestHelper.testSort("liuyubobo.InsertSort", arrCopy);
+//        System.out.println("测试有序性更强的数组，大小：" + n + "范围从：[0, 3)");
+//        arr = SortTestHelper.randomArray(n ,0, 3);
+//        arrCopy = Arrays.copyOf(arr, n);
+//
+//        SortTestHelper.testSort("liuyubobo.SelectSort", arr);
+//        SortTestHelper.testSort("liuyubobo.InsertSort", arrCopy);
 
         //近乎有序的数组
         int swapTime = 100;
@@ -32,8 +36,12 @@ public class Main {
 
         arr = SortTestHelper.neralyOrderedArr(n, swapTime);
         arrCopy = Arrays.copyOf(arr, n);
+        arr2 = Arrays.copyOf(arr, n);
+        arr3 = Arrays.copyOf(arr, n);
 
         SortTestHelper.testSort("liuyubobo.SelectSort", arr);
         SortTestHelper.testSort("liuyubobo.InsertSort", arrCopy);
+        SortTestHelper.testSort("liuyubobo.BubbleSort", arr2);
+        SortTestHelper.testSort("liuyubobo.ShellSort", arr3);
     }
 }

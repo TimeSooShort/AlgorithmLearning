@@ -6,7 +6,9 @@ public class SortTestHelper {
 
     //产生一个随机数组
     public static Integer[] randomArray(int n ,int rangeL, int rangeR){
-        assert  rangeL <= rangeR;
+        if (rangeL > rangeR){
+            throw new IllegalArgumentException("rangL can not be bigger than rangR");
+        }
 
         Integer[] array = new Integer[n];
         for (int i = 0; i < n; i++) {
@@ -39,7 +41,7 @@ public class SortTestHelper {
         return arr;
     }
 
-    public static void main(String[] args) {
+    public static void printArray(Object[] args) {
 
         for (int i = 0; i < args.length; i++) {
             System.out.print(args[i]);
