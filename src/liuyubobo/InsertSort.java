@@ -21,6 +21,17 @@ public class InsertSort {
         }
     }
 
+    public static void sort(Comparable[] arr, int lo, int hi){
+        for (int i = lo; i <= hi; i++){
+            Comparable e = arr[i];
+            int j = i;
+            for (; j > lo && less(e, arr[j-1]);j--){
+                arr[j] = arr[j-1];
+            }
+            arr[j] = e;
+        }
+    }
+
     private static void swap(Object[] a, int i, int j){
         Object temp = a[i];
         a[i] = a[j];
