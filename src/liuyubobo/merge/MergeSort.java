@@ -29,7 +29,6 @@ public class MergeSort {
     }
 
     private static void merge(Comparable[] arr,Comparable[] aux, int lo, int mid, int hi){
-
         System.arraycopy(arr, lo, aux, lo, hi-lo+1);
         int lt = lo, rt = mid+1;
         for (int i = lo; i <= hi; i++){

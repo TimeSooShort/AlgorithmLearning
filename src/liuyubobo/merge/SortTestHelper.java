@@ -30,7 +30,7 @@ public class SortTestHelper {
             arr[i] = new Integer(i);
         }
 
-        for (int i = 0; i <= swapTime; i++){
+        for (int i = 0; i < swapTime; i++){
             int a = (int) (Math.random() * n);
             int b = (int) (Math.random() * n);
 

@@ -30,7 +30,7 @@ public class SortTestHelper {
             arr[i] = new Integer(i);
         }
 
-        for (int i = 0; i <= swapTime; i++){
+        for (int i = 0; i < swapTime; i++){
             int a = (int) (Math.random() * n);
             int b = (int) (Math.random() * n);
 
@@ -80,5 +80,20 @@ public class SortTestHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static Integer[] orderedArray(int n){
+        return neralyOrderedArr(n, 0);
+    }
+
+    public static Integer[] inverstArray(int n){
+        Integer[] arr = orderedArray(n);
+
+        for (int i = n/2-1; i >= 0; i--){
+            Integer t = arr[i];
+            arr[i] = arr[n-i-1];
+            arr[n-i-1] = t;
+        }
+        return arr;
     }
 }
