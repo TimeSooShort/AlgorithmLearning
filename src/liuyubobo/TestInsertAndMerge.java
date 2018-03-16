@@ -14,7 +14,7 @@ public class TestInsertAndMerge {
         Integer[] arr2 = Arrays.copyOf(arr1, n);
 
         SortTestHelper.testSort("liuyubobo.InsertSort", arr1);
-        SortTestHelper.testSort("liuyubobo.MergeSort", arr2);
+        SortTestHelper.testSort("liuyubobo.merge.MergeSort", arr2);
 
 
         //近乎有序的数组
@@ -27,6 +27,6 @@ public class TestInsertAndMerge {
         arr2 = Arrays.copyOf(arr1, n);
 
         SortTestHelper.testSort("liuyubobo.InsertSort", arr1);
-        SortTestHelper.testSort("liuyubobo.MergeSort", arr2);
+        SortTestHelper.testSort("liuyubobo.merge.MergeSort", arr2);
     }
 }

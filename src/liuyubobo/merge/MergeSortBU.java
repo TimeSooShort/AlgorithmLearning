@@ -1,4 +1,7 @@
-package liuyubobo;
+package liuyubobo.merge;
+
+import liuyubobo.InsertSort;
+import liuyubobo.SortTestHelper;
 
 import java.util.Arrays;
 
@@ -42,6 +45,6 @@ public class MergeSortBU {
     public static void main(String[] args) {
         int n = 1000000;
         Integer[] arr = SortTestHelper.randomArray(n, 0, n);
-        SortTestHelper.testSort("liuyubobo.MergeSortBU", arr);
+        SortTestHelper.testSort("liuyubobo.merge.MergeSortBU", arr);
     }
 }

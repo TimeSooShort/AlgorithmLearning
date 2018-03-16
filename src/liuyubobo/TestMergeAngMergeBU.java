@@ -10,13 +10,13 @@ public class TestMergeAngMergeBU {
         Integer[] arr1 = SortTestHelper.randomArray(n, 0, n);
         Integer[] arr2 = Arrays.copyOf(arr1, n);
 
-        SortTestHelper.testSort("liuyubobo.MergeSort", arr1);
-        SortTestHelper.testSort("liuyubobo.MergeSortBU", arr2);
+        SortTestHelper.testSort("liuyubobo.merge.MergeSort", arr1);
+        SortTestHelper.testSort("liuyubobo.merge.MergeSortBU", arr2);
 
         arr1 = SortTestHelper.neralyOrderedArr(n, 100);
         arr2 = Arrays.copyOf(arr1, n);
 
-        SortTestHelper.testSort("liuyubobo.MergeSort", arr1);
-        SortTestHelper.testSort("liuyubobo.MergeSortBU", arr2);
+        SortTestHelper.testSort("liuyubobo.merge.MergeSort", arr1);
+        SortTestHelper.testSort("liuyubobo.merge.MergeSortBU", arr2);
     }
 }
