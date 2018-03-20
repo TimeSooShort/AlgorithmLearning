@@ -9,7 +9,6 @@ public class LeetCode148 {
         ListNode preMid = null, mid = head, last = head;
         while(last!=null && last.next!=null) {
             preMid = mid;
-            mid = mid.next;
             last = last.next.next;
         }
         preMid.next = null;

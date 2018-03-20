@@ -96,4 +96,17 @@ public class SortTestHelper {
         }
         return arr;
     }
+
+    public static Integer[] shuffleArray(Integer[] arr){
+        int n = arr.length;
+
+        for (int i = 0; i < n; i++){
+            int j = (int) (Math.random()*(n-i)) + i;
+
+            Integer t = arr[i];
+            arr[i] = arr[j];
+            arr[j] = t;
+        }
+        return arr;
+    }
 }
