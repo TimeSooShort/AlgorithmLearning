@@ -12,6 +12,19 @@ public class Maxheap<Item extends Comparable> {
         count = 0;
     }
 
+    public Maxheap(Comparable[] arr){
+        int n = arr.length;
+        datas = (Item[]) new Comparable[n+1];
+        this.capacity = n;
+        for (int i = 0; i < n; i++){
+            datas[i+1] = (Item) arr[i];
+        }
+        this.count = n;
+        for (int k = count/2; k >= 1; k--){
+            shiftDown(k);
+        }
+    }
+
     public void insert(Item item){
         assert count+1 <= capacity;
         datas[++count] = item;

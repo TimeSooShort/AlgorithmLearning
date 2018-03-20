@@ -4,6 +4,7 @@ import liuyubobo.SortTestHelper;
 
 public class HeapSort1 {
 
+    //构建堆与取出最大数组成数组两个过程复杂度均为O(nlogn)
     public static void sort(Comparable[] arr){
         int n = arr.length;
         Maxheap<Comparable> maxheap = new Maxheap<>(n);
