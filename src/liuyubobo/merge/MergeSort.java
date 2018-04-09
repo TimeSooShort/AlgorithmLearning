@@ -3,8 +3,6 @@ package liuyubobo.merge;
 import liuyubobo.InsertSort;
 import liuyubobo.SortTestHelper;
 
-import java.util.Arrays;
-
 public class MergeSort {
 
     //方法一

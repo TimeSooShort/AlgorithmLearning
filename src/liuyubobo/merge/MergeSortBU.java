@@ -12,7 +12,7 @@ public class MergeSortBU {
         //方法一
         int n = arr.length;
 //        for (int sz = 1; sz < n; sz*=2){
-//            for (int j = 0; j < n-sz; j += 2*sz){
+//            for (int j = 0; j < n-sz; j += 2*sz){  //j < n-sz因为merge里的mid = j+sz-1
 //                merge(arr, j, j+sz-1, Math.min(n-1, j+sz*2-1));
 //            }
 //        }

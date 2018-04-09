@@ -1,4 +1,4 @@
-package LeetCode;
+package LeetCode.array;
 
 import java.util.HashMap;
 
@@ -23,6 +23,7 @@ public class TwoSum {
             if(map.containsKey(target - nums[i])) {
                 result[1] = i;
                 result[0] = map.get(target - nums[i]);
+                break;
             }
             map.put(nums[i], i);
         }
