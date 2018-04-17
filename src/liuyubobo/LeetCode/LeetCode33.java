@@ -57,6 +57,33 @@ public class LeetCode33 {
         return -1;
     }
 
+    //方法三：对方法一升级
+    public static int sort3(int[] nums, int target){
+        int n = nums.length;
+        if (n == 0) throw new IllegalArgumentException("数组为空");
+        int minIndex = findMinIndex(nums, 0, n-1);
+        if (nums[minIndex] == target) return minIndex;
+        int start = nums[n-1] < target ? 0 : minIndex;
+        int end = nums[n-1] < target ? minIndex-1 : n-1;
+
+        while (start <= end){
+            int mid = start + (end-start)/2;
+            if (nums[mid] < target) start = mid+1;
+            else if (nums[mid] > target) end = mid-1;
+            else return mid;
+        }
+        return -1;
+    }
+    private static int findMinIndex(int[] nums, int lo, int hi){
+        int pre = lo, last = hi;
+        while(pre < last){
+            int mid = pre + (last-pre)/2;
+            if (nums[mid] > nums[last]) pre = mid+1;  //注意这里的比较
+            else last = mid;
+        }
+        return pre;
+    }
+
     public static void main(String[] args) {
         int n = 200000;
         Integer[] array = SortTestHelper.orderedArray(n);
