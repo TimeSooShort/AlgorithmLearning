@@ -15,7 +15,7 @@ public class LeetCode34 {
 
         int divide = binary(nums, 0, nums.length-1, target);
         if(divide < 0) return result;
-        result[0] = divide;;
+        result[0] = divide;
         if(divide > 0) {
             int start = lastLeft(nums, divide, target);
             if (start >= 0) result[0] = start;
@@ -29,6 +29,7 @@ public class LeetCode34 {
         }
         return result;
     }
+    //二分
     private int binary(int[] nums, int lo, int hi, int target){
         while(lo <= hi){
             int mid = lo + (hi-lo)/2;
@@ -38,6 +39,7 @@ public class LeetCode34 {
         }
         return -1;
     }
+    //循环找到最左点
     private int lastLeft(int[] nums, int index, int target){
         int preIndex = -1;
         while(index > 0){
@@ -49,9 +51,10 @@ public class LeetCode34 {
         }
         return preIndex;
     }
+    //循环找到最右
     private int lastRight(int[] nums, int index, int target){
         int preIndex = -1;
-        index = binary(nums, index+1, nums.length-1, target);
+        index = binary(nums, index+1, nums.length-1, target); //index可能为0
         while(index > 0){
             preIndex = index;
             index = binary(nums, index+1, nums.length-1, target);
@@ -60,5 +63,52 @@ public class LeetCode34 {
             }
         }
         return preIndex;
+    }
+
+    //====================================================
+
+    //方法二
+    public int[] search(int[] nums, int target){
+        if(nums == null || nums.length == 0) return new int[]{-1,-1};
+
+        return new int[]{searchLeft(nums, target), searchRight(nums, target)};
+    }
+
+    private int searchLeft(int[] nums, int target){
+        int start = 0, end = nums.length-1;
+        while (start + 1 < end){  //长度大于2，进行查找；循环到start+1=end停止
+            int mid = start + (end-start)/2;
+            if(nums[mid] >= target){
+                end = mid;
+            }else {
+                start = mid;  //由于循环的条件这里不能写成start = mid+1；
+            }
+        }
+        if(nums[start] == target){ //这里先判断start，因为nums[0]可能等于target, 其他情况nums[start] != target
+            return start;
+        }else if(nums[end] == target){
+            return end;
+        }else {
+            return -1;
+        }
+    }
+
+    private int searchRight(int[] nums, int target){
+        int start = 0, end = nums.length-1;
+        while(start + 1 < end){
+            int mid = start+(end-start)/2;
+            if(nums[mid] <= target){
+                start = mid;
+            }else {
+                end = mid;
+            }
+        }
+        if(nums[end] == target){ //这里先判断end，因为nums[nums.length-1]可能等于target，其他情况nums[end] != target
+            return end;
+        }else if(nums[start] == target){
+            return start;
+        }else {
+            return -1;
+        }
     }
 }
