@@ -1,4 +1,4 @@
-package LeetCode.array;
+package LeetCode.backtacking;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +20,9 @@ public class LeetCode46 {
         }
 
         for (int i = start; i < nums.length; i++) {
+            //交换意味着打乱，意味着回溯深度优先搜索所形成的树不同
+            //这里是相邻交换，每次将i与i-1位置原始值（此时它被之前的操作交换到了start位置）
+            //交换后start+1节点后的树就完全不同，也就是一种新的组合
             swap(nums, i, start);
             permute(nums, result, start + 1);
             swap(nums, i, start);
