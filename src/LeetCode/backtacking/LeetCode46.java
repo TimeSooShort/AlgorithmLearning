@@ -1,6 +1,7 @@
 package LeetCode.backtacking;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //backtacking
@@ -66,5 +67,12 @@ public class LeetCode46 {
                 list.remove(list.size()-1);
             }
         }
+    }
+
+    public static void main(String[] args) {
+        LeetCode46 test = new LeetCode46();
+        int[] nums = {1,2,3,4};
+        test.permute(nums);
+        System.out.println(Arrays.toString(nums));
     }
 }
