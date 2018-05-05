@@ -1,5 +1,7 @@
 package LeetCode.array;
 
+import java.util.Arrays;
+
 /**
  * Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
 
@@ -110,5 +112,16 @@ public class LeetCode34 {
         }else {
             return -1;
         }
+    }
+
+    public static void main(String[] args) {
+        LeetCode34 test = new LeetCode34();
+        int[] nums =  {5,7,7,4,6,8,8,10};
+        int[] result = test.search(nums, 8);
+        System.out.println(Arrays.toString(result));
+        result = test.search(nums, 6);
+        System.out.println(Arrays.toString(result));
+        result = test.search(nums, 10);
+        System.out.println(Arrays.toString(result));
     }
 }
