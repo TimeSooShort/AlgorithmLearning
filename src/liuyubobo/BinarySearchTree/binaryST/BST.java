@@ -78,6 +78,37 @@ public class BST<Key extends Comparable<Key>, Value> {
         }
     }
 
+    public Key minimum() {
+        assert count != 0;
+        Node min = minimum(root);
+        return min.key;
+    }
+
+    public Key maximum() {
+        assert count != 0;
+        Node max = maximum(root);
+        return max.key;
+    }
+
+    //删除节点
+    public void remove(Key key) {
+        root = remove(root, key);
+    }
+
+    //删除最小节点
+    public void removeMin() {
+        if (root != null) {
+            root = removeMin(root);
+        }
+    }
+
+    //删除最大节点
+    public void removeMax() {
+        if (root != null) {
+            root = removeMax(root);
+        }
+    }
+
     //-----------------辅助函数-------------------------
 
     //插入操作，递归，返回根节点
@@ -151,6 +182,78 @@ public class BST<Key extends Comparable<Key>, Value> {
             postOrder(node.right);
             System.out.print(node.key + " ");
         }
+    }
+
+    //最小节点
+    private Node minimum(Node node) {
+        if (node.left == null) {
+            return node;
+        }
+        return minimum(node.left);
+    }
+
+    //最大节点
+    private Node maximum(Node node) {
+        if (node.right == null) {
+            return node;
+        }
+        return maximum(node.right);
+    }
+
+    //删除最小节点
+    private Node removeMin(Node node) {
+        if (node.left == null) {
+            Node right = node.right;
+            node.right = null;
+            --count;
+            return right;
+        }
+        node.left = removeMin(node.left);
+        return node;
+    }
+
+    //删除最大节点
+    private Node removeMax(Node node) {
+        if (node.right == null) {
+            Node left = node.left;
+            node.left = null;
+            --count;
+            return left;
+        }
+        node.right = removeMax(node.right);
+        return node;
+    }
+
+    //删除节点
+    private Node remove(Node node, Key key) {
+        if (node == null) {
+            return null;
+        }
+        if (key.compareTo(node.key) < 0) {
+            node.left = remove(node.left, key);
+        }else if (key.compareTo(node.key) > 0) {
+            node.right = remove(node.right, key);
+        }else {
+            if (node.left == null) {
+                Node right = node.right;
+                node.right = null;
+                --count;
+                return right;
+            }
+
+            if (node.right == null) {
+                Node left = node.left;
+                node.left = null;
+                --count;
+                return left;
+            }
+
+            Node minRight = minimum(node.right);
+            node.key = minRight.key;
+            node.value = minRight.value;
+            node.right = removeMin(node.right);  //这里注意：因为有可能右子树只有一个，所以需要对返回结果重新赋值
+        }
+        return node;
     }
 
     public static void main(String[] args) {
