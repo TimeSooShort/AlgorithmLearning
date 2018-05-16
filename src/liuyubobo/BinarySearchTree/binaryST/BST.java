@@ -1,5 +1,9 @@
 package liuyubobo.BinarySearchTree.binaryST;
 
+
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BST<Key extends Comparable<Key>, Value> {
 
     private class Node {
@@ -43,6 +47,35 @@ public class BST<Key extends Comparable<Key>, Value> {
     //获取value
     public Value get(Key key) {
         return get(key, root);
+    }
+
+    //前序遍历
+    public void preOrder() {
+        preOrder(root);
+    }
+    //中序遍历
+    public void inOrder() {
+        inOrder(root);
+    }
+    //后序遍历
+    public void postOrder() {
+        postOrder(root);
+    }
+
+    //层级遍历
+    public void levelOrder() {
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while(!queue.isEmpty()) {
+            Node node = queue.remove();
+            System.out.print(node.key + " ");
+            if (node.left != null){
+                queue.add(node.left);
+            }
+            if (node.right != null) {
+                queue.add(node.right);
+            }
+        }
     }
 
     //-----------------辅助函数-------------------------
@@ -90,6 +123,33 @@ public class BST<Key extends Comparable<Key>, Value> {
             return get(key, node.left);
         }else {
             return get(key, node.right);
+        }
+    }
+
+    //前序遍历
+    private void preOrder(Node node){
+        if (node != null) {
+            System.out.print(node.key + " ");
+            preOrder(node.left);
+            preOrder(node.right);
+        }
+    }
+
+    //中序遍历
+    private void inOrder(Node node) {
+        if (node != null) {
+            inOrder(node.left);
+            System.out.print(node.key + " ");
+            inOrder(node.right);
+        }
+    }
+
+    //后序遍历
+    private void postOrder(Node node) {
+        if (node != null) {
+            postOrder(node.left);
+            postOrder(node.right);
+            System.out.print(node.key + " ");
         }
     }
 
