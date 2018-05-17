@@ -1,4 +1,4 @@
-package JVM;
+package TestSomething;
 
 import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;

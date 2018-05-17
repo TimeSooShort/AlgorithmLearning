@@ -1,4 +1,4 @@
-package JUC;
+package TestSomething.JUC;
 
 public class Throwable2RunEx {
 
