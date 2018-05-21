@@ -11,7 +11,7 @@ public class CountDownLatchTrain {
             new Thread(() -> {
                 System.out.println(Thread.currentThread().getName() + " wait;");
                 try {
-                    latch.wait();
+                    latch.await();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
