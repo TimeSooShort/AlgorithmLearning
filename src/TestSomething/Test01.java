@@ -15,6 +15,13 @@ public class Test01 {
         return n;
     }
 
+    static final int advanceProbe(int probe) {
+        probe ^= probe << 13;   // xorshift
+        probe ^= probe >>> 17;
+        probe ^= probe << 5;
+        return probe;
+    }
+
     static final int resizeStamp(int n) {
         return Integer.numberOfLeadingZeros(n) | (1 << (16 - 1));
     }
@@ -22,9 +29,12 @@ public class Test01 {
     public static void main(String[] args) {
 //        int rs = numberOfLeadingZeros(4);
 //        System.out.println(rs);
-        int rs = resizeStamp(16);
-        rs = (rs << 16) + 2;
-        System.out.println(rs);
-        System.out.println(Integer.toBinaryString(rs));
+//        int rs = resizeStamp(16);
+//        rs = (rs << 16) + 2;
+//        System.out.println(rs);
+//        System.out.println(Integer.toBinaryString(rs));
+        int res = advanceProbe(0x9e3779b9);
+        System.out.println(0x9e3779b9);
+        System.out.println(res);
     }
 }
