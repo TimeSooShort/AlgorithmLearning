@@ -33,8 +33,11 @@ public class Test01 {
 //        rs = (rs << 16) + 2;
 //        System.out.println(rs);
 //        System.out.println(Integer.toBinaryString(rs));
-        int res = advanceProbe(0x9e3779b9);
-        System.out.println(0x9e3779b9);
-        System.out.println(res);
+
+//        int res = advanceProbe(0x9e3779b9);
+//        System.out.println(0x9e3779b9);
+//        System.out.println(res);
+
+        System.out.println(Integer.MAX_VALUE);
     }
 }

@@ -2,6 +2,7 @@
 
 #package file
 *.war
+*.jar
 *.ear
 
 #kdiff3 ignore
