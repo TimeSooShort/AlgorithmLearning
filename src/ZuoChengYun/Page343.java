@@ -1,5 +1,8 @@
 package ZuoChengYun;
 
+/**
+ * 数组中个数大于一半的数
+ */
 public class Page343 {
 
     public int solve(int[] arr) {

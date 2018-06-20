@@ -13,9 +13,12 @@ import java.util.function.Consumer;
  * 在上一题中使用一个num与time来记录数字及其出现的次数，time==0，则删除num中的值；就是相互抵消
  * 大于一半的数一定会最后留下来；
  *
- * 这一题是上一题的扩展，大于N/k的数，就用k-1个num与time来记录
+ * 这一题是上一题的扩展，大于N/k的数，就用k-1个num与time来记录，即map大小为k-1
+ * 1，当map不满时就将该数加进map，个数为1；2，当map中存在该数则相应增加其time；
+ * 3，当map满了且没有该数，则将map中所有value减1，等于0的则删除该键值对。
  *
- * 为什么map剩下的数字里一定有大于N/k的数？因为只有当map.size==k-1的情况下才会减1，那么这一来就变成
+ * 为什么最后于N/k的数一定会保留在map剩下的里？
+ * 因为只有当map.size==k-1的情况下才会减1，那么这一来就变成
  * 最少k个数才会减1，那么你N个数，最多减N/K，所以大于N/k的数一定会剩下来
  */
 public class Page343Advance {
@@ -47,21 +50,12 @@ public class Page343Advance {
                 map.replace(num, val+1);
             }
         }
-//        boolean print = false;
-//        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-//            if (entry.getValue() > arr.length/k) {
-//                System.out.print(entry.getKey() + " ");
-//                print = true;
-//            }
-//        }
+
         map.forEach((key, value) -> {
             if (value > arr.length / k) {
                 System.out.print(key + " ");
             }
         });
-//        if (!print) {
-//            System.out.println("没有符合条件的");
-//        }
     }
 
     // 将map里全部数字的value值减1，减1后若value==0，则删除该键
