@@ -3,7 +3,8 @@ package ZuoChengYun.BFPRT;
 import java.util.Arrays;
 
 /**
- *
+ *无序数组找到其中最小的k个数
+ * O（nlogn）,采用最大堆
  */
 public class KthSmaller {
 
