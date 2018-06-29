@@ -154,7 +154,8 @@ public class BFPRT {
 
     public static void main(String[] args) {
         BFPRT instance = new BFPRT();
-        int[] arr = {2,3,5,8,11,23,6,7,7,11,11,15,24,23,23,17,5,9,13,11,11,22,18,2,3,5,8,11,23,6,7,7,11,11,15,24,23,23};
+        int[] arr = {2,3,5,8,11,23,6,7,7,11,11,15,24,23,23,17,5,9,13,11,
+                11,22,18,2,3,5,8,11,23,6,7,7,11,11,15,24,23,23};
         int[] res = instance.solve(arr, 17);
         System.out.println(Arrays.toString(res));
     }

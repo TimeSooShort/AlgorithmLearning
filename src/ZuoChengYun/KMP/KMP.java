@@ -1,7 +1,16 @@
 package ZuoChengYun.KMP;
 
+/**
+ * 两个字符串，str与match，长度分别为N，M。N >= M。若str包含match，则返回match在str中开始位置。
+ * 利用KMP算法，时间复杂读为O(N)
+ */
 public class KMP {
 
+    /**
+     * 得到match的nextArr数组，nextArr[i]表示match[0 ~ i-1]中前缀（不包含i-1）与后缀（不包含0）最大相等个数
+     * @param match
+     * @return
+     */
     private int[] getNextArr(char[] match) {
         if (match.length == 1) {
             return new int[] {-1};
@@ -41,7 +50,7 @@ public class KMP {
             }else if (mi == 0) {
                 si++;
             }else {
-                mi = nextArr[si];
+                mi = nextArr[mi];
             }
         }
         return mi == mArr.length ? si-mi : -1;
@@ -49,8 +58,8 @@ public class KMP {
 
     public static void main(String[] args) {
         KMP instance = new KMP();
-        System.out.println(instance.solve("acbc", "bc"));
-        System.out.println(instance.solve("acbc", "bcc"));
-        System.out.println(instance.solve("aabccd", "aa"));
+        System.out.println(instance.solve("acbcfajlgheowiahgog", "jlg"));
+        System.out.println(instance.solve("acasdfasgfasgbc", "fas"));
+        System.out.println(instance.solve("aabagahhgahbzzxbccd", "hbz"));
     }
 }

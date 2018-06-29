@@ -49,7 +49,7 @@ public class KthSmaller {
         for (int i = 0; i < k; i++) {
             heapInsert(maxHeap, i, arr[i]);
         }
-        System.out.println(Arrays.toString(maxHeap));
+//        System.out.println(Arrays.toString(maxHeap));
         for (int i = k; i < arr.length; i++) {
             if (arr[i] < maxHeap[0]) {
                 shiftDown(maxHeap, 0, arr[i]);
@@ -63,5 +63,10 @@ public class KthSmaller {
         int[] arr = {14,7,12,8,15,3,28,6,34,19,10,2,1};
         int[] res = instance.solve(arr, 10);
         System.out.println(Arrays.toString(res));
+
+        int[] arr1 = {2,3,5,8,11,23,6,7,7,11,11,15,24,23,23,17,5,9,13,11,
+                11,22,18,2,3,5,8,11,23,6,7,7,11,11,15,24,23,23};
+        int[] res1 = instance.solve(arr1, 17);
+        System.out.println(Arrays.toString(res1));
     }
 }
