@@ -55,14 +55,56 @@ public class Page202 {
         return res;
     }
 
+    // 优化时间复杂度，O（NlogN）
+    // ends[i]数组代表长度为i+1的子序列的最小值，求dp[i]就在ends[]数组中二分查找下界l，
+    // dp[i] = l+1; ends[l] = arr[i]
+    // 之所以能用二分，是因为ends数组是有序的，ends[i] > ends[i-1]，为什么？
+    // 实际上在计算过程中是采用二分法插入，找到arr[i]合适的位置插入/替换
+
+    public int[] solve2(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            return null;
+        }
+        int[] dp = getDp2(arr);
+        return getMaxFromDp(dp, arr);
+    }
+
+    private int[] getDp2(int[] arr) {
+        int[] dp = new int[arr.length];
+        int[] ends = new int[arr.length];
+        int right = 0; // 代表ends[0..right]已计算出结果,ends[right+1....arr.length-1] = 0;
+        dp[0] = 1;
+        ends[0] = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            int l = 0;
+            int r = right;
+            while (l <= r) {
+                int m = l+(r-l)/2;
+                if (arr[i] < ends[m]) {
+                    r = m-1;
+                }else {
+                    l = m+1;
+                }
+            }
+            right = Math.max(right, l);
+            ends[l] = arr[i];
+            dp[i] = l+1;
+        }
+        return dp;
+    }
+
     public static void main(String[] args) {
         int[] arr = {2,1,5,3,6,4,8,9,7};
         Page202 instance = new Page202();
         int[] res = instance.solve(arr);
         System.out.println(Arrays.toString(res));
+        int[] res21 = instance.solve2(arr);
+        System.out.println(Arrays.toString(res21));
 
         int[] arr2 = {3};
         int[] res2 = instance.solve(arr2);
         System.out.println(Arrays.toString(res2));
+        int[] res22 = instance.solve2(arr2);
+        System.out.println(Arrays.toString(res22));
     }
 }
