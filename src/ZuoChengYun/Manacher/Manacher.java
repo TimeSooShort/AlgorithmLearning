@@ -33,7 +33,7 @@ public class Manacher {
         int index = -1;
         //之前遍历的所有字符的所有回文半径中，最右即将到达的位置。
         int pR = -1;
-        int max = 0;
+        int max = Integer.MIN_VALUE;
         for (int i = 0; i < pArray.length; i++) {
             pArray[i] = i < pR ? Math.min(pArray[index*2 - i], pR-i) : 1;
             while (pArray[i] + i < strArray.length && i - pArray[i] >= 0) {

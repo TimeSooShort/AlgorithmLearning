@@ -31,7 +31,7 @@ public class Manacher2 {
         int[] pArray = new int[strArr.length];
         int pR = -1;
         int index = -1;
-        int maxContainsEnd = 0;
+        int maxContainsEnd = -1;
 
         for (int i = 0; i < pArray.length; i++) {
             pArray[i] = i < pR ? Math.min(pArray[index*2-i], pR-i) : 1;
