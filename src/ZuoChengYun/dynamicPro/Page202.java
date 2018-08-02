@@ -59,7 +59,7 @@ public class Page202 {
     // ends[i]数组代表长度为i+1的子序列的最小值，求dp[i]就在ends[]数组中二分查找下界l，
     // dp[i] = l+1; ends[l] = arr[i]
     // 之所以能用二分，是因为ends数组是有序的，ends[i] > ends[i-1]，为什么？
-    // 实际上在计算过程中是采用二分法插入，找到arr[i]合适的位置插入/替换
+    // 因为这是ends[]定义决定的
 
     public int[] solve2(int[] arr) {
         if (arr == null || arr.length == 0) {
@@ -80,8 +80,8 @@ public class Page202 {
             int r = right;
             while (l <= r) {
                 int m = l+(r-l)/2;
-                if (arr[i] < ends[m]) {
-                    r = m-1;
+                if (arr[i] > ends[m]) {
+                    l = m + 1;
                 }else {
                     l = m+1;
                 }
