@@ -58,21 +58,24 @@ public class LeetCode46 {
     }
     private void recursive(List<List<Integer>> result, List<Integer> list, int[] nums){
         if(list.size() == nums.length){
+            System.out.println("list complete : " + list);
             result.add(new ArrayList<>(list));
         }else {
             for(int i = 0; i < nums.length; i++){
                 if(list.contains(nums[i])) continue;
                 list.add(nums[i]);
+                System.out.println("list add :" + list);
                 recursive(result, list, nums);
                 list.remove(list.size()-1);
+                System.out.println("list remove :" + list);
             }
         }
     }
 
     public static void main(String[] args) {
         LeetCode46 test = new LeetCode46();
-        int[] nums = {1,2,3,4};
-        test.permute(nums);
-        System.out.println(Arrays.toString(nums));
+        int[] nums = {1,2,3,4,5};
+        test.permute2(nums);
+//        System.out.println(Arrays.toString(nums));
     }
 }
