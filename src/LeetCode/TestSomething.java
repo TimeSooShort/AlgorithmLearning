@@ -49,8 +49,12 @@ public class TestSomething {
 //        int[] nums = {1,2,3,4};
 //        TestSomething.threeNum(nums);
 
-        String s3 = new String("1") + new String("1");
-        String s4 = "11";
-        System.out.println(s3.intern() == s4);
+//        String s3 = new String("1") + new String("1");
+//        String s4 = "11";
+//        System.out.println(s3.intern() == s4);
+
+        String s = null;
+        String q = null;
+        System.out.println(s == q);
     }
 }

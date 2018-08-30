@@ -6,7 +6,7 @@ import ZuoChengYun.PrintBinaryTree.Node;
  * 非递归，不同辅助栈的Morris遍历二叉树的算法
  * 两个指针，cur2代表cur1的左儿子，二者保持着用的关系往左移动，每次移动后让cur2的最右节点指向cur1；
  * 直到cur2 == null，打印cur1，之后利用右指针使cur1往上，cur2 = cur1,找到cur2的最右节点，
- * 将它的右指针恢复null，打印cur1 ，cur1 = cur1.right重负上述过程；最终cur1 == null代表结束。
+ * 将它的右指针恢复null，cur1 = cur1.right重负上述过程；最终cur1 == null代表结束。
  * 这里选择的打印时机是：1，左节点为null，及是中序遍历中的”左“。2，利用右指针往上移动，打印移动到的节点。
  * 即是中序遍历中的“中”。而“右”即是1与2。
  */
