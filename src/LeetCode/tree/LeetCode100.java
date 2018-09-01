@@ -1,4 +1,6 @@
-package LeetCode;
+package LeetCode.tree;
+
+import LeetCode.TreeNode;
 
 public class LeetCode100 {
     public boolean isSameTree(TreeNode p, TreeNode q) {

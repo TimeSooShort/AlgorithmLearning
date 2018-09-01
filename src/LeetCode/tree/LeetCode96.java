@@ -1,4 +1,4 @@
-package LeetCode;
+package LeetCode.tree;
 
 /**
  * 以1为root，则其左子树为null， 右子树个数为n-1,f(1)=f(0)*f(n-1),f(0) = f(1)=1;

@@ -1,4 +1,6 @@
-package LeetCode;
+package LeetCode.tree;
+
+import LeetCode.TreeNode;
 
 import java.util.ArrayDeque;
 import java.util.LinkedList;
