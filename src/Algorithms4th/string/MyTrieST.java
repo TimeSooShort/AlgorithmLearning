@@ -42,12 +42,14 @@ public class MyTrieST<Value> {
     public Iterable<String> keys(){
         return keysWithPrefix("");
     }
+
     public Iterable<String> keysWithPrefix(String prefix){
         Queue<String> queue = new Queue<>();
         Node x = get(root, prefix, 0);
         collect(x, new StringBuilder(prefix), queue);
         return queue;
     }
+
     private void collect(Node x, StringBuilder prefix, Queue<String> result){
         if (x == null) return;
         if (x.value != null) result.equeue(prefix.toString());
@@ -118,7 +120,7 @@ public class MyTrieST<Value> {
         if (key == null) throw new IllegalArgumentException("argument to delete() is null");
         root = delete(root, key, 0);
     }
-    //注意非空值与非空节点不能删除
+
     private Node delete(Node x, String key, int d){
         if (x == null) return null;
         if (d == key.length()){
