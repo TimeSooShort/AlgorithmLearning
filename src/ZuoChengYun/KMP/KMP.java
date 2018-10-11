@@ -19,7 +19,7 @@ public class KMP {
         nextArr[0] = -1;
         nextArr[1] = 0;
         int i = 2;
-        int k = 0;
+        int k = 0; // 当前的下标为i，则k的值等于next[i-1]
         while (i < nextArr.length) {
             if (match[i-1] == match[k]) {
                 nextArr[i] = ++k;
