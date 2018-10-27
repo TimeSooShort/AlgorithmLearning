@@ -1,5 +1,8 @@
 package Offer;
 
+/**
+ * 字符串匹配问题
+ */
 public class Offer19 {
 
     public boolean solve(String s, String pattern) {
@@ -23,6 +26,18 @@ public class Offer19 {
         }
         return process(s, p, si, pi+2);
     }
+
+    // private boolean process(char[] s, char[] p, int si, int pi) {
+    //     if(p.length == pi) return si == s.length;
+    //     if(pi+1 == p.length || p[pi+1] != '*') {
+    //         return si != s.length && (s[si] == p[pi] || p[pi] == '.') && process(s, p, si+1, pi+1);
+    //     }
+    //     if(si != s.length && (s[si] == p[pi] || p[pi] == '.')){
+    //         先令x*匹配一个字符，不成功再令x*一个个去匹配更多，还不成功让x*匹配 ''空
+    //         return process(s, p, si+1, pi+2) || process(s, p, si+1, pi) || process(s, p, si, pi+2);
+    //     }
+    //     return process(s, p, si, pi+2);
+    // }
 
     private boolean isValid(char[] s, char[] p) {
         for (char value : s) {

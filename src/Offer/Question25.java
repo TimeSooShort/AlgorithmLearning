@@ -33,11 +33,10 @@ public class Question25 {
 	}
 
 	private void findPath(BinaryTreeNode root, int expectNum, Stack<Integer> stack, int curNum) {
-		// TODO Auto-generated method stub
 		curNum += root.val;
 		stack.push(root.val);
 		if (root.left == null && root.right == null && expectNum == curNum) {
-			for (int path : stack) {
+			for (int path : stack) { // 不会删除stack中元素
 				System.out.print(path + " ");
 			}
 			System.out.println();
