@@ -45,7 +45,13 @@ public class QuickSort3Ways {
 
     public static void main(String[] args) {
         int n = 1000000;
-        Integer[] arr = SortTestHelper.randomArray(n, 0, 10);
+        Integer[] arr = SortTestHelper.randomArray(n, 0, n);
+        SortTestHelper.testSort("liuyubobo.QuickSort.QuickSort3Ways", arr);
+
+        arr = SortTestHelper.randomArray(n, 0, 30);
+        SortTestHelper.testSort("liuyubobo.QuickSort.QuickSort3Ways", arr);
+
+        arr = SortTestHelper.neralyOrderedArr(n, 50);
         SortTestHelper.testSort("liuyubobo.QuickSort.QuickSort3Ways", arr);
     }
 }

@@ -41,6 +41,7 @@ public class SortTestHelper {
         return arr;
     }
 
+    // 打印数组
     public static void printArray(Object[] args) {
 
         for (int i = 0; i < args.length; i++) {
@@ -50,6 +51,7 @@ public class SortTestHelper {
         System.out.println();
     }
 
+    // 判断是否有序，单调不减
     public static boolean isSorted(Comparable[] arr){
         for (int i = 0; i < arr.length-1; i++){
             if (arr[i].compareTo(arr[i+1]) > 0) return false;
@@ -82,10 +84,12 @@ public class SortTestHelper {
         }
     }
 
+    // 返回一个有序数组，单调增
     public static Integer[] orderedArray(int n){
         return neralyOrderedArr(n, 0);
     }
 
+    // 返回一个单调递减数组
     public static Integer[] inverstArray(int n){
         Integer[] arr = orderedArray(n);
 
@@ -97,6 +101,7 @@ public class SortTestHelper {
         return arr;
     }
 
+    // 打乱一个数组
     public static Integer[] shuffleArray(Integer[] arr){
         int n = arr.length;
 

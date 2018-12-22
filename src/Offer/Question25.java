@@ -1,5 +1,6 @@
 package Offer;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -18,7 +19,6 @@ public class Question25 {
 		int val;
 		
 		public BinaryTreeNode(int val) {
-			// TODO Auto-generated constructor stub
 			this.val = val;
 		}
 	}
@@ -27,26 +27,26 @@ public class Question25 {
 		if (root == null) {
 			return;
 		}
-		Stack<Integer> stack = new Stack<>();
+		ArrayDeque<Integer> stack = new ArrayDeque<>();
 		int curNum = 0;
 		findPath(root, expectNum, stack, curNum);
 	}
 
-	private void findPath(BinaryTreeNode root, int expectNum, Stack<Integer> stack, int curNum) {
+	private void findPath(BinaryTreeNode root, int expectNum, ArrayDeque<Integer> stack, int curNum) {
 		curNum += root.val;
-		stack.push(root.val);
+		stack.addLast(root.val);
 		if (root.left == null && root.right == null && expectNum == curNum) {
 			for (int path : stack) { // 不会删除stack中元素
 				System.out.print(path + " ");
 			}
 			System.out.println();
 		}
-		if (root.left != null && expectNum > curNum) {
+		if (root.left != null) {
 			findPath(root.left, expectNum, stack, curNum);
 		}
-		if (root.right != null && expectNum > curNum) {
+		if (root.right != null) {
 			findPath(root.right, expectNum, stack, curNum);
 		}
-		stack.pop();
+		stack.pollLast();
 	}
 }

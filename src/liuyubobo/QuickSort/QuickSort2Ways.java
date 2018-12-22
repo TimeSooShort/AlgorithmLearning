@@ -36,10 +36,10 @@ public class QuickSort2Ways {
 
         int lt = lo+1, rt = hi;
         while (lt <= rt){
-            while (lt <= hi && arr[lt].compareTo(v) < 0){
+            while (lt <= rt && arr[lt].compareTo(v) < 0){
                 lt++;
             }
-            while (rt >= lo+1 && arr[rt].compareTo(v) > 0){
+            while (rt >= lt && arr[rt].compareTo(v) >= 0){
                 rt--;
             }
             if (lt > rt) break;

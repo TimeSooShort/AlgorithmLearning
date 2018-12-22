@@ -14,6 +14,7 @@ public class Offer7 {
         return preIn(pre, 0, pre.length-1, in, 0, in.length-1, map);
     }
 
+    // 第4，6个参数并没有用到，只是这样便于理解
     private TreeNode preIn(int[] pre, int pi, int pj, int[] in, int ni, int nj,
                            Map<Integer, Integer> map) {
         if (pi > pj) return null;

@@ -14,6 +14,8 @@ public class LeetCode46 {
         return result;
     }
 
+    // 这种方法是什么意思呢？例如abc，在第0位有三种可能，axx,bxx,cxx, xx代表剩下的子数组，处理方法相同
+    // 下面：start代表第start位，将nums[start+1~length-1]就是剩下的子数组，递归处理
     private void permute(int[] nums, List<List<Integer>> result, int start) {
         if (start == nums.length - 1) {
             result.add(asList(nums));
@@ -21,9 +23,6 @@ public class LeetCode46 {
         }
 
         for (int i = start; i < nums.length; i++) {
-            //交换意味着打乱，意味着回溯深度优先搜索所形成的树不同
-            //这里是相邻交换，每次将i与i-1位置原始值（此时它被之前的操作交换到了start位置）
-            //交换后start+1节点后的树就完全不同，也就是一种新的组合
             swap(nums, i, start);
             permute(nums, result, start + 1);
             swap(nums, i, start);
@@ -31,7 +30,7 @@ public class LeetCode46 {
 
     }
 
-    private static List<Integer> asList(int[] nums) {
+    private List<Integer> asList(int[] nums) {
         List<Integer> list = new ArrayList<>(nums.length);
         for (int num : nums) {
             list.add(num);
@@ -40,7 +39,7 @@ public class LeetCode46 {
         return list;
     }
 
-    private static void swap(int[] nums, int i, int j) {
+    private void swap(int[] nums, int i, int j) {
         if (i != j) {
             int tmp = nums[i];
             nums[i] = nums[j];
@@ -56,6 +55,7 @@ public class LeetCode46 {
         recursive(result, new ArrayList<>(), nums);
         return result;
     }
+    // 思路与上面相同，只不过是采用list存储
     private void recursive(List<List<Integer>> result, List<Integer> list, int[] nums){
         if(list.size() == nums.length){
             System.out.println("list complete : " + list);

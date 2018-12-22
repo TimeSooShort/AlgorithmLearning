@@ -4,6 +4,9 @@ import liuyubobo.SortTestHelper;
 
 import java.util.Arrays;
 
+/**
+ * 逆序数问题
+ */
 public class InversionCount {
 
     public static long solve(Comparable[] arr){
