@@ -32,7 +32,7 @@ public class Offer3 {
             int count = count(arr, start, middle);
             if (start == end) {
                 if (count > 1) return start;
-                else break;
+                break;
             }
             if (count > middle-start+1) {
                 end = middle;
