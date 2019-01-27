@@ -35,11 +35,11 @@ public class Offer32 {
             System.out.print(node.val + " ");
             if (node.left != null) {
                 queue.addLast(node.left);
-                nLast = head.left;
+                nLast = node.left;
             }
             if (node.right != null) {
                 queue.addLast(node.right);
-                nLast = head.right;
+                nLast = node.right;
             }
             if (node == last && !queue.isEmpty()) {
                 System.out.print("\n");

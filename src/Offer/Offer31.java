@@ -7,39 +7,17 @@ import java.util.ArrayDeque;
  */
 public class Offer31 {
 
-    // in数组为元素的压入顺序， 判断out数组是否是某种栈的弹出顺序
-    public boolean solve(int[] in, int[] out) {
-        if (in == null || out == null) throw new IllegalArgumentException("参数不能为空");
+    public boolean solve(int[] pushA, int[] popA) {
         ArrayDeque<Integer> stack = new ArrayDeque<>();
-        int outI = 0, inI = 0;
-        while (outI < out.length) {
-            if (stack.isEmpty()) {
-                for (int i = inI; i < in.length; i++) {
-                    if (in[i] == out[outI]) {
-                        inI = i+1;
-                        outI++;
-                        break;
-                    }
-                    stack.addLast(in[i]);
-                }
-            }
-            else if (stack.peekLast() == out[outI]) {
-                outI++;
+        for (int pushI = 0, popI = 0; pushI < pushA.length; pushI++) {
+            stack.addLast(pushA[pushI]);
+            while (popI < popA.length && !stack.isEmpty()
+                    && stack.peekLast() == popA[popI]) {
                 stack.pollLast();
-            }else if (stack.contains(out[outI])) {
-                return false;
-            }else {
-                for (int i = inI; i < in.length; i++) {
-                    if (in[i] == out[outI]) {
-                        inI = i+1;
-                        outI++;
-                        break;
-                    }
-                    stack.addLast(in[i]);
-                }
+                popI++;
             }
         }
-        return true;
+        return stack.isEmpty();
     }
 
     public static void main(String[] args) {

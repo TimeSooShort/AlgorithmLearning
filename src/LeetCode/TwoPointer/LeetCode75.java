@@ -1,5 +1,7 @@
 package LeetCode.TwoPointer;
 
+import java.util.Arrays;
+
 /**
  * Created by Administrator on 2018/1/22.
  */
@@ -32,9 +34,27 @@ public class LeetCode75 {
             while(nums[i] == 0 && i > zero) exch(nums, i, zero++);
         }
     }
+
+    public void sortColors2(int[] nums) {
+        if (nums == null || nums.length < 2) return;
+        int zero = -1, two = nums.length, i = 0;
+        while(i < two) {
+            if(nums[i] == 0) exch(nums, i++, ++zero);
+            else if(nums[i] == 2) exch(nums, i, --two);
+            else i++;
+        }
+    }
+
     private void exch(int[] nums, int i, int j){
         int temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        LeetCode75 instance= new LeetCode75();
+        int[] arr = {1,0};
+        instance.sortColors2(arr);
+        System.out.println(Arrays.toString(arr));
     }
 }

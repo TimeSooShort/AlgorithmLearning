@@ -7,20 +7,17 @@ public class Offer17 {
     public void solve(int n) {
 
         byte[] arr = new byte[n];
-        for (int i = 0; i < 10; i++) {
-            arr[0] = (byte) (i + '0');
-            print(arr, n, 1);
-        }
+        print(arr, 0);
     }
 
-    private void print(byte[] arr, int n, int index) {
-        if (n == index) {
-            System.out.print(new String(arr) + " ");
+    private void print(byte[] arr, int index) {
+        if (arr.length == index) {
+            System.out.print(new Integer(new String(arr)) +" ");
             return;
         }
         for (int i = 0; i < 10; i++) {
             arr[index] = (byte) (i + '0');
-            print(arr, n, index+1);
+            print(arr, index+1);
         }
     }
 

@@ -14,7 +14,7 @@ public class Offer13 {
     private int count(int[][] matrix, int rows, int cols, int row, int col, int threshold,
                       boolean[][] visited) {
         int count = 0;
-        if (check(matrix, rows, cols, row, col, threshold, visited)) {
+        if (check(rows, cols, row, col, threshold, visited)) {
             visited[row][col] = true;
             count = 1 + count(matrix, rows, cols, row+1, col, threshold, visited)
                     + count(matrix, rows, cols, row, col+1, threshold, visited)
@@ -24,7 +24,7 @@ public class Offer13 {
         return count;
     }
 
-    private boolean check(int[][] matrix, int rows, int cols, int row, int col, int threshold,
+    private boolean check(int rows, int cols, int row, int col, int threshold,
                           boolean[][] visited) {
         if (row >= 0 && row < rows && col >= 0 && col < cols &&
                 getDigitSum(row) + getDigitSum(col) <= threshold &&

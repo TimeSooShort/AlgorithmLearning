@@ -12,12 +12,13 @@ public class Offer19 {
         return isValid(sArr, pArr) && process(sArr, pArr, 0, 0);
     }
 
-    // 函数p(i, j)表示s[si, sln]与p[pi, pln]的匹配情况
+    // 函数p(i, j)表示s[si, sln)与p[pi, pln)的匹配情况
     private boolean process(char[] s, char[] p, int si, int pi) {
         if (pi == p.length) return si == s.length;
 
         if (pi+1 == p.length || p[pi+1] != '*') {
-            return si != s.length && (p[pi] == s[si] || p[pi] == '.') && process(s, p, pi+1, si+1);
+            return si != s.length && (p[pi] == s[si] || p[pi] == '.')
+                    && process(s, p, pi+1, si+1);
         }
 
         while (si != s.length && (p[pi] == s[si] || p[pi] == '.')) {

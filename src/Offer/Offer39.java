@@ -5,34 +5,32 @@ package Offer;
  */
 public class Offer39 {
 
-    public int solve(int[] arr) {
+    public static void solve(int[] arr) {
         if (arr == null || arr.length == 0) throw new IllegalArgumentException("array can't be null or empty");
         int num = arr[0];
-        int numLen = 1;
+        int times = 1;
         for (int i = 1; i < arr.length; i++) {
             if (arr[i] == num) {
-                numLen++;
+                times++;
             }
             else {
-                numLen--;
-                if (numLen == 0) {
+                times--;
+                if (times == 0) {
                     num = arr[i];
-                    numLen = 1;
+                    times = 1;
                 }
             }
         }
-        if (numLen > 1) return num;
-        numLen = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == num) numLen++;
+        times = 0;
+        for (int anArr : arr) {
+            if (num == anArr) times++;
         }
-        if (numLen > arr.length/2) return num;
-        else throw new RuntimeException("no such number");
+        if (times > arr.length/2) System.out.println(num);
+        else System.out.println("No such number");
     }
 
     public static void main(String[] args) {
-        Offer39 instance = new Offer39();
-        int[] arr = {2,2,2,4,2,5,5,2,2,5,2,7,5};
-        System.out.println(instance.solve(arr));
+        int[] arr = {2,2,2,4,2,5,5,5,2,7,5};
+        solve(arr);
     }
 }
