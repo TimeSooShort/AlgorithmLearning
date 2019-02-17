@@ -42,7 +42,7 @@ public class Page187 {
         }
 
         for (int i = 1; i < more; i++) {
-            dp[0] += (rowShorter ? matrix[0][i] : matrix[i][i]);
+            dp[0] += (rowShorter ? matrix[0][i] : matrix[i][0]);
             for (int j = 1; j < less; j++) {
                 dp[j] = Math.min(dp[j-1], dp[j]) + matrix[i][j];
             }
