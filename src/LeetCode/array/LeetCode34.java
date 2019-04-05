@@ -114,6 +114,29 @@ public class LeetCode34 {
         }
     }
 
+    // 优化代码
+    public int[] searchRange2(int[] nums, int target) {
+        int[] res = {-1, -1};
+        if(nums == null || nums.length == 0) return res;
+        int l = 0, h = nums.length-1;
+        while(l < h) {
+            int mid = l+(h-l)/2;
+            if(nums[mid] >= target) h = mid;
+            else l = mid+1;
+        }
+        if(nums[h] == target) res[0] = h;
+
+        l = h;
+        h = nums.length-1;
+        while(l < h) {
+            int mid = l+(h-l)/2+1;
+            if(nums[mid] > target) h = mid-1;
+            else l = mid;
+        }
+        if(nums[l] == target) res[1] = l;
+        return res;
+    }
+
     public static void main(String[] args) {
         LeetCode34 test = new LeetCode34();
         int[] nums =  {5,7,7,4,6,8,8,10};
