@@ -53,15 +53,11 @@ public class Offer30<Value> {
         if (head == null) throw new IllegalStateException("stake is empty");
 
         // 辅助站也同步删除栈顶元素
-        Node<Value> minNext = minHead;
-        minHead.next = null;
-        minHead = minNext;
+        minHead = minHead.next;
 
-        Node<Value> res = head;
-        Node<Value> next = head.next;
-        head.next = null; // help GC
-        head = next;
-        return res.val;
+        Value pop = head.val;
+        head = head.next;
+        return pop;
     }
 
     public Value min() {
