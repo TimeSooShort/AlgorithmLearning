@@ -1,4 +1,4 @@
 # AlgorithmLearning
 Skill comes from practices
-这是我平时学习算法的记录的一个Project
-包括LeetCode，《算法》，左程云...
+这里记录了我平时刷的算法题
+包括LeetCode，《算法第四版》，左程云, 剑指Offer...
