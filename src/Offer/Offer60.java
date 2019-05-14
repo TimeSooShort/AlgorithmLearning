@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// 题目在lintCode中的地址
+// https://www.lintcode.com/problem/dices-sum/description
 public class Offer60 {
 
     public List<Map.Entry<Integer, Double>> dicesSum(int n) {
